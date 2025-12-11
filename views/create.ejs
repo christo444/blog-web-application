@@ -1,0 +1,95 @@
+<%- include('partials/header', { pageTitle: 'Create New Post' }) %>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Page Header -->
+            <div class="mb-4">
+                <a href="/" class="text-decoration-none text-muted d-inline-flex align-items-center mb-3">
+                    <i class="bi bi-arrow-left me-2"></i>Back to Home
+                </a>
+                <h1 class="display-5 fw-bold mb-2">Create New Post</h1>
+                <p class="text-muted">Share your thoughts with the world</p>
+            </div>
+
+            <!-- Create Post Form -->
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <form action="/posts" method="POST">
+                        <div class="mb-4">
+                            <label for="title" class="form-label fw-semibold">
+                                <i class="bi bi-type me-1"></i>Post Title
+                            </label>
+                            <input 
+                                type="text" 
+                                class="form-control form-control-lg" 
+                                id="title" 
+                                name="title" 
+                                placeholder="Enter an engaging title..." 
+                                required
+                                maxlength="100"
+                            >
+                            <div class="form-text">A catchy title helps attract readers</div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="author" class="form-label fw-semibold">
+                                <i class="bi bi-person me-1"></i>Author Name
+                            </label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="author" 
+                                name="author" 
+                                placeholder="Your name" 
+                                required
+                                maxlength="50"
+                            >
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="content" class="form-label fw-semibold">
+                                <i class="bi bi-file-text me-1"></i>Post Content
+                            </label>
+                            <textarea 
+                                class="form-control" 
+                                id="content" 
+                                name="content" 
+                                rows="12" 
+                                placeholder="Write your story here..." 
+                                required
+                            ></textarea>
+                            <div class="form-text">Express yourself freely - there's no limit to your creativity!</div>
+                        </div>
+
+                        <div class="d-flex gap-2 justify-content-end">
+                            <a href="/" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-circle me-1"></i>Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="bi bi-check-circle me-1"></i>Publish Post
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tips Card -->
+            <div class="card bg-light border-0 mt-4">
+                <div class="card-body">
+                    <h6 class="fw-semibold mb-3">
+                        <i class="bi bi-lightbulb text-warning me-2"></i>Writing Tips
+                    </h6>
+                    <ul class="small text-muted mb-0">
+                        <li>Start with a compelling hook to grab attention</li>
+                        <li>Use paragraphs to organize your thoughts</li>
+                        <li>Proofread before publishing</li>
+                        <li>Be authentic and write in your own voice</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

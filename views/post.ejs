@@ -1,0 +1,92 @@
+<%- include('partials/header', { pageTitle: post.title }) %>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Back Navigation -->
+            <a href="/" class="text-decoration-none text-muted d-inline-flex align-items-center mb-4">
+                <i class="bi bi-arrow-left me-2"></i>Back to All Posts
+            </a>
+
+            <!-- Post Content -->
+            <article class="post-detail card shadow-sm border-0">
+                <div class="card-body p-4 p-md-5">
+                    <!-- Post Header -->
+                    <div class="post-header mb-4 pb-4 border-bottom">
+                        <h1 class="post-title display-4 fw-bold mb-3"><%= post.title %></h1>
+                        
+                        <div class="post-meta d-flex flex-wrap gap-3 text-muted">
+                            <span>
+                                <i class="bi bi-person-circle me-1"></i>
+                                <strong><%= post.author %></strong>
+                            </span>
+                            <span>
+                                <i class="bi bi-calendar3 me-1"></i>
+                                <%= new Date(post.date).toLocaleDateString('en-US', { 
+                                    year: 'numeric', 
+                                    month: 'long', 
+                                    day: 'numeric' 
+                                }) %>
+                            </span>
+                            <span>
+                                <i class="bi bi-clock me-1"></i>
+                                <%= Math.ceil(post.content.split(' ').length / 200) %> min read
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Post Body -->
+                    <div class="post-content mb-4">
+                        <p class="lead"><%= post.content %></p>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Action Buttons -->
+            <div class="post-actions card shadow-sm border-0 mt-4">
+                <div class="card-body p-4">
+                    <div class="d-flex flex-wrap gap-2 justify-content-between align-items-center">
+                        <h6 class="mb-0 text-muted">
+                            <i class="bi bi-gear me-2"></i>Manage Post
+                        </h6>
+                        <div class="d-flex gap-2">
+                            <a href="/posts/<%= post.id %>/edit" class="btn btn-outline-primary">
+                                <i class="bi bi-pencil me-1"></i>Edit Post
+                            </a>
+                            <form action="/posts/<%= post.id %>?_method=DELETE" method="POST" class="delete-form d-inline">
+                                <button type="submit" class="btn btn-outline-danger">
+                                    <i class="bi bi-trash me-1"></i>Delete Post
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Share Section -->
+            <div class="share-section card bg-light border-0 mt-4">
+                <div class="card-body p-4 text-center">
+                    <h6 class="fw-semibold mb-3">Enjoyed this post?</h6>
+                    <p class="text-muted small mb-3">Share it with your friends!</p>
+                    <div class="d-flex gap-2 justify-content-center">
+                        <button class="btn btn-sm btn-outline-secondary" disabled>
+                            <i class="bi bi-twitter"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" disabled>
+                            <i class="bi bi-facebook"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" disabled>
+                            <i class="bi bi-linkedin"></i>
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" disabled>
+                            <i class="bi bi-link-45deg"></i>
+                        </button>
+                    </div>
+                    <p class="text-muted small mt-2 mb-0">(Social sharing coming soon)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

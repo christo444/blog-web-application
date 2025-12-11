@@ -1,0 +1,87 @@
+<%- include('partials/header', { pageTitle: 'Edit Post' }) %>
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <!-- Page Header -->
+            <div class="mb-4">
+                <a href="/" class="text-decoration-none text-muted d-inline-flex align-items-center mb-3">
+                    <i class="bi bi-arrow-left me-2"></i>Back to Home
+                </a>
+                <h1 class="display-5 fw-bold mb-2">Edit Post</h1>
+                <p class="text-muted">Make changes to your post</p>
+            </div>
+
+            <!-- Edit Post Form -->
+            <div class="card shadow-sm">
+                <div class="card-body p-4">
+                    <form action="/posts/<%= post.id %>?_method=PUT" method="POST">
+                        <div class="mb-4">
+                            <label for="title" class="form-label fw-semibold">
+                                <i class="bi bi-type me-1"></i>Post Title
+                            </label>
+                            <input 
+                                type="text" 
+                                class="form-control form-control-lg" 
+                                id="title" 
+                                name="title" 
+                                value="<%= post.title %>"
+                                required
+                                maxlength="100"
+                            >
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="author" class="form-label fw-semibold">
+                                <i class="bi bi-person me-1"></i>Author Name
+                            </label>
+                            <input 
+                                type="text" 
+                                class="form-control" 
+                                id="author" 
+                                name="author" 
+                                value="<%= post.author %>"
+                                required
+                                maxlength="50"
+                            >
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="content" class="form-label fw-semibold">
+                                <i class="bi bi-file-text me-1"></i>Post Content
+                            </label>
+                            <textarea 
+                                class="form-control" 
+                                id="content" 
+                                name="content" 
+                                rows="12" 
+                                required
+                            ><%= post.content %></textarea>
+                        </div>
+
+                        <div class="alert alert-info d-flex align-items-center" role="alert">
+                            <i class="bi bi-info-circle-fill me-2"></i>
+                            <div class="small">
+                                Last updated: <%= new Date(post.date).toLocaleString('en-US', { 
+                                    dateStyle: 'long', 
+                                    timeStyle: 'short' 
+                                }) %>
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2 justify-content-end">
+                            <a href="/posts/<%= post.id %>" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-circle me-1"></i>Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="bi bi-save me-1"></i>Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
